@@ -13,11 +13,18 @@ const readFIlePro = file=>{
     })
 };
 
+    const writeFilePr= (file,data)=>{
+        return new Promise((resolve,rejects)=>{
+            if(err)rejects('could not write the file😢');
+            resolve('success')
+        })
+    }
     readFIlePro(`${__dirname}/dog.txt`).then(data =>{
         console.log(`Breed: ${data}`);
     
-        superagent
+       return superagent
         .get(`https://dog.ceo/api/breed/${data}/images/random`)
+    })
         .end((err,res)=>{
             if(err) return console.log(err.message);
             console.log(res.body.message);
@@ -28,4 +35,4 @@ const readFIlePro = file=>{
         })
         });
     
-    })
+   
